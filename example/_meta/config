@@ -1,0 +1,3 @@
+base=/media/backup1/servers/example
+host="example.com:8730"
+login="backup-example-server"
