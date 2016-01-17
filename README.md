@@ -2,6 +2,8 @@
 This tool is rsync-based util to perform incremental backups of your servers. I wrote that tool nearly 10 years ago, and after minor changes it still works like a charm ;)  
 Since I'm not BASH programmer it's horribly written, but few people asked me to publish it anyway.
 
+**If you're looking for something WAY simpler** to backup data from local disk to another local disk just use `simple-backup.sh` script. You should only edit two lines in it and it's ready to go ;)
+
 ## How it works?
 This tool was built with following architecture in mind:  
 ![architecture](http://i.imgur.com/X5l8nmi.png)  
