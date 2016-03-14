@@ -73,4 +73,3 @@ As you probably discovered yourself `last.log` and `prev.log` are created. First
 
 ## Issues
   * This method provides **NO ENCRYPTION** out of the box. You should use your own SSH tunnel or VPN.
-  * Scrip is **not** prepared to backup in intervals smaller than 24 hours, since folders are named according to schema `YYYY-MM-DD`. That can be easily changed ;)
