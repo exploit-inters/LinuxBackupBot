@@ -22,11 +22,11 @@ fi
 
 log=$base/_meta/last.log
 # END OF CONFIG
-folder=`date +%Y-%m-%d`
+folder=`date +%Y-%m-%d#%H-%M`
 
 mv $log $base/_meta/prev.log
 start_ts=$(date +"%s");
-echo "Backup for" $host "started at" $folder `date +%H:%M:%S` > $log
+echo "Backup for" $host "started at" $folder `date +%H.%M.%S%t%H:%M:%S` > $log
 echo "Base folder:" $base >> $log
 echo "Disk space before:" >> $log
  df -h $base >> $log
@@ -38,7 +38,7 @@ echo >> $log
 
 rsync rsync://$login"@"$host/backup -rz -a $base/$folder --link-dest=$base/last --devices --password-file=$base/_meta/passwd --exclude-from=$base/_meta/excludes --log-file=$log
 if [ $? != 0 ]; then
-        echo "Backup of" $host "failed at" `date +%H:%M:%S` >> $log
+        echo "Backup of" $host "failed at" `date +%H.%M.%S%t%H:%M:%S` >> $log
 	exit 1;
 fi
 
@@ -53,6 +53,6 @@ rm $base/last
 ln -s $base/$folder $base/last
 
 diff=$(($(date +"%s")-$start_ts))
-echo "Backup of" $host "completed at" `date +%H:%M:%S` "(took $(($diff / 60))m $(($diff % 60))s)" >> $log
+echo "Backup of" $host "completed at" `date +%H.%M.%S%t%H:%M:%S` "(took $(($diff / 60))m $(($diff % 60))s)" >> $log
 
 exit 0;
