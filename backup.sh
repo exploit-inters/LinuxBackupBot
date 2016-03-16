@@ -188,10 +188,12 @@ rsync \
 	--password-file="$meta_path/passwd" \
 	--exclude-from="$meta_path/excludes" \
 	--log-file="$log_path"
+ret=$?
+	
 rsync_human_time=$(_get_human_time_diff "$start_ts")
 
 #TODO: add trap for signals - rsync will return 0 if interrupted by signal ;F
-if [ "$?" -ne "0" ]; then
+if [ "$ret" -ne "0" ]; then
 	printf "Rsync FAILED (#$?) at $(_get_log_date) - it took ${rsync_human_time}\n" >> "$log_path"
 	printf "Leaving unfinished backup at ${new_backup_path}.in-progress for investigation\n" >> "$log_path"
 	_rel_lock_exit 1
