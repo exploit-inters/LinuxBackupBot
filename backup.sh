@@ -121,7 +121,7 @@ if [ -f "$lock_path" ]; then
 	printf "\nIt's possible that another instance is running or something crashed,\n" >> "$conflicted_log_path"
 	printf "investigate this situation manually and than remove lockfile.\n\n" >> "$conflicted_log_path"
 
-	_rel_lock_exit 1
+	exit 1
 else
 	_get_log_date > "$lock_path"
 fi
