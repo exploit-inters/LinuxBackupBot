@@ -144,7 +144,7 @@ if [ ! -f "$meta_path/excludes" ]; then
         _rel_lock_exit 1
 fi
 
-printf "Preparing to backup ${login}@${host}...\n" >> "$log_path"
+printf "Preparing backup of ${login}@${host}/${login} to ${new_backup_path}...\n" >> "$log_path"
 
 #First check if last backup LINK even exists
 if [ -L "$last_backup_link_path" ]; then
