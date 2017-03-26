@@ -182,7 +182,7 @@ printf "Starting rsync at $(_get_log_date)...\n" >> "$log_path"
 #TODO: add checking for $incremental_backup
 rsync \
 	"rsync://${login}@${host}/${login}" \
-	-rz --devices \
+	-rz --devices --partial \
 	-a "${new_backup_path}.in-progress" \
 	--link-dest="$last_backup_link_path" \
 	--password-file="$meta_path/passwd" \
